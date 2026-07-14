@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="tl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>16 | Para kay Avril 💙🩷</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500;600;700&family=Nunito:wght@400;600;700;800&family=Poppins:wght@500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --blue:#a8d8f0;
+    --blue-deep:#6fa8d8;
+    --pink:#f9c6cf;
+    --pink-deep:#e39ab0;
+    --cream:#fffaf5;
+    --ink:#40415c;
+    --ink-soft:#767795;
+    --gold:#f0d78c;
+    --radius:22px;
+    --shadow:0 10px 34px rgba(107,91,149,0.18);
+  }
+
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html,body{height:100%;}
+  body{
+    font-family:'Nunito',sans-serif;
+    color:var(--ink);
+    min-height:100vh;
+    overflow-x:hidden;
+    background:linear-gradient(180deg,#a8d8f0 0%,#c6def2 22%,#e9d4e6 55%,#f9c6cf 100%);
+    background-attachment:fixed;
+  }
+
+  .app{position:relative; min-height:100vh; width:100%;}
+
+  /* ---------- decorative sky layer ---------- */
+  .sky-decor{position:fixed; inset:0; overflow:hidden; z-index:0; pointer-events:none;}
+  .star{position:absolute; background:#fff; border-radius:50%; opacity:.2; animation:twinkle 3.4s ease-in-out infinite;}
+  @keyframes twinkle{0%,100%{opacity:.15;} 50%{opacity:.95;}}
+  .cloud{position:absolute; border-radius:50%; filter:blur(28px); animation:drift linear infinite;}
+  @keyframes drift{0%{transform:translateX(-8%);} 50%{transform:translateX(8%);} 100%{transform:translateX(-8%);}}
+
+  /* ---------- screens ---------- */
+  .screen{
+    position:absolute; inset:0; z-index:1;
+    display:flex; flex-direction:column; align-items:center;
+    justify-content:center; justify-content:safe center;
+    padding:48px 20px; text-align:center;
+    opacity:0; visibility:hidden; pointer-events:none;
+    transition:opacity .6s ease;
+    overflow-y:auto; -webkit-overflow-scrolling:touch;
+  }
+  #screen-letter{
+    justify-content:flex-start;
+    padding-top:52px;
+    padding-bottom:52px;
+  }
+  .screen.active{opacity:1; visibility:visible; pointer-events:auto;}
+
+  .eyebrow{
+    font-family:'Poppins',sans-serif; font-size:.72rem; letter-spacing:.16em;
+    text-transform:uppercase; color:var(--ink-soft); margin-bottom:14px;
+  }
+
+  /* ---------- intro ---------- */
+  .constellation-intro{display:flex; align-items:center; justify-content:center; gap:6px; margin-bottom:20px;}
+  .node{font-size:1.5rem; color:var(--gold); opacity:0; transform:scale(.3); animation:popIn .6s ease forwards;}
+  .node-a{animation-delay:.2s;}
+  .node-b{animation-delay:.9s;}
+  @keyframes popIn{to{opacity:1; transform:scale(1);}}
+  .link-line{width:0; height:2px; background:linear-gradient(90deg,var(--blue-deep),var(--pink-deep)); animation:growLine 1s ease forwards; animation-delay:.55s;}
+  @keyframes growLine{to{width:64px;}}
+
+  .hero-title{
+    font-family:'Quicksand',sans-serif; font-weight:700;
+    font-size:clamp(1.7rem,6vw,2.6rem); color:var(--ink); margin-bottom:16px;
+  }
+  .hero-sub{
+    font-size:clamp(.95rem,3.6vw,1.1rem); color:var(--ink-soft); max-width:460px;
+    line-height:1.7; margin-bottom:30px;
+  }
+
+  .btn-primary{
+    background:linear-gradient(135deg,var(--blue-deep),var(--pink-deep));
+    color:#fff; border:none; padding:15px 32px; border-radius:999px;
+    font-family:'Quicksand',sans-serif; font-weight:700; font-size:1rem;
+    cursor:pointer; box-shadow:var(--shadow); transition:transform .2s ease;
+  }
+  .btn-primary:hover{transform:translateY(-2px);}
+  .btn-ghost{
+    background:transparent; border:2px solid var(--blue-deep); color:var(--blue-deep);
+    padding:12px 26px; border-radius:999px; font-family:'Quicksand',sans-serif;
+    font-weight:700; cursor:pointer; margin-top:22px; transition:transform .2s ease;
+  }
+  .btn-ghost:hover{transform:translateY(-2px);}
+  button:focus-visible{outline:3px solid var(--gold); outline-offset:3px;}
+  button[disabled]{opacity:.3; cursor:not-allowed; transform:none !important;}
+
+  /* ---------- star thread progress ---------- */
+  .thread{position:relative; width:min(560px,90vw); height:26px; margin-bottom:26px;}
+  .thread-track{position:absolute; top:50%; left:0; right:0; height:2px; background:rgba(255,255,255,.5); transform:translateY(-50%); border-radius:2px;}
+  .thread-fill{position:absolute; top:50%; left:0; height:2px; width:0%; background:linear-gradient(90deg,var(--blue-deep),var(--pink-deep)); transform:translateY(-50%); border-radius:2px; transition:width .5s ease;}
+  .thread-dots{position:relative; display:flex; justify-content:space-between; align-items:center; z-index:2; height:26px;}
+  .dot{font-size:.8rem; color:rgba(255,255,255,.65); transition:color .3s ease, transform .3s ease, text-shadow .3s ease;}
+  .dot.lit{color:var(--gold); transform:scale(1.2); text-shadow:0 0 8px rgba(240,215,140,.85);}
+
+  /* ---------- poem card ---------- */
+  .poem-card{
+    background:rgba(255,255,255,.88); backdrop-filter:blur(6px);
+    border-radius:var(--radius); box-shadow:var(--shadow);
+    padding:34px 30px; max-width:540px; width:100%; margin-bottom:22px;
+    border-top:5px solid var(--blue-deep);
+  }
+  .poem-card.lang-en{border-top-color:var(--pink-deep);}
+  .poem-card.enter{animation:fadeSlideUp .5s ease;}
+  @keyframes fadeSlideUp{from{opacity:0; transform:translateY(16px);} to{opacity:1; transform:translateY(0);}}
+  .poem-kicker{font-family:'Poppins',sans-serif; font-size:.68rem; letter-spacing:.14em; text-transform:uppercase; color:var(--ink-soft); margin-bottom:10px;}
+  .poem-title{font-family:'Quicksand',sans-serif; font-weight:700; font-size:clamp(1.25rem,5vw,1.6rem); margin-bottom:14px;}
+  .poem-body p{font-size:clamp(.95rem,3.5vw,1.05rem); line-height:1.75; margin-bottom:14px;}
+  .poem-body p:last-child{margin-bottom:0;}
+
+  .nav-row{display:flex; gap:16px; align-items:center; justify-content:center;}
+
+  /* ---------- letter screen ---------- */
+  .divider{font-size:1.3rem; letter-spacing:.35em; color:var(--ink-soft); margin-bottom:14px;}
+  .letter-heading{font-family:'Quicksand',sans-serif; font-weight:700; font-size:clamp(1.5rem,6vw,2rem); margin-bottom:24px;}
+  .letter-card{
+    background:var(--cream); border-radius:var(--radius); box-shadow:var(--shadow);
+    padding:40px 32px; max-width:600px; width:100%; text-align:left;
+  }
+  .letter-card p{font-size:clamp(.95rem,3.5vw,1.05rem); line-height:1.85; margin-bottom:16px;}
+  .letter-card p:first-of-type::first-letter{
+    font-family:'Quicksand',sans-serif; font-weight:700; font-size:2.5em; color:var(--pink-deep);
+    float:left; line-height:.8; margin-right:8px; margin-top:5px;
+  }
+  .signature{margin-top:10px; font-family:'Quicksand',sans-serif; font-weight:600; color:var(--ink-soft); line-height:1.6;}
+
+  @media (max-width:480px){
+    .poem-card{padding:26px 22px;}
+    .letter-card{padding:30px 22px;}
+    .thread{width:94vw;}
+  }
+
+  @media (prefers-reduced-motion:reduce){
+    *,*::before,*::after{animation-duration:.001ms !important; animation-iteration-count:1 !important; transition-duration:.001ms !important;}
+  }
+</style>
+</head>
+<body>
+
+<div class="sky-decor" aria-hidden="true">
+  <span class="star" style="top:6%;left:10%;width:3px;height:3px;animation-delay:0s;"></span>
+  <span class="star" style="top:12%;left:82%;width:4px;height:4px;animation-delay:.5s;"></span>
+  <span class="star" style="top:20%;left:45%;width:2px;height:2px;animation-delay:1s;"></span>
+  <span class="star" style="top:28%;left:70%;width:3px;height:3px;animation-delay:1.4s;"></span>
+  <span class="star" style="top:34%;left:18%;width:3px;height:3px;animation-delay:.2s;"></span>
+  <span class="star" style="top:42%;left:88%;width:2px;height:2px;animation-delay:1.8s;"></span>
+  <span class="star" style="top:48%;left:6%;width:4px;height:4px;animation-delay:.9s;"></span>
+  <span class="star" style="top:55%;left:60%;width:2px;height:2px;animation-delay:2.1s;"></span>
+  <span class="star" style="top:62%;left:32%;width:3px;height:3px;animation-delay:.3s;"></span>
+  <span class="star" style="top:68%;left:92%;width:3px;height:3px;animation-delay:1.6s;"></span>
+  <span class="star" style="top:75%;left:14%;width:2px;height:2px;animation-delay:.7s;"></span>
+  <span class="star" style="top:82%;left:76%;width:4px;height:4px;animation-delay:2.4s;"></span>
+  <span class="star" style="top:88%;left:50%;width:2px;height:2px;animation-delay:1.1s;"></span>
+  <span class="star" style="top:15%;left:30%;width:2px;height:2px;animation-delay:2.7s;"></span>
+  <div class="cloud" style="top:8%;left:-12%;width:260px;height:120px;background:radial-gradient(circle,rgba(255,255,255,.55),transparent 70%);animation-duration:50s;"></div>
+  <div class="cloud" style="top:52%;left:65%;width:320px;height:150px;background:radial-gradient(circle,rgba(227,154,176,.35),transparent 70%);animation-duration:65s;animation-delay:4s;"></div>
+  <div class="cloud" style="top:78%;left:-15%;width:240px;height:110px;background:radial-gradient(circle,rgba(111,168,216,.35),transparent 70%);animation-duration:70s;animation-delay:8s;"></div>
+</div>
+
+<div class="app">
+
+  <section id="screen-intro" class="screen active">
+    <p class="eyebrow">Ika-16 na Courtsary · Hulyo 9, 2026</p>
+    <div class="constellation-intro" aria-hidden="true">
+      <span class="node node-a">✦</span>
+      <span class="link-line"></span>
+      <span class="node node-b">✦</span>
+    </div>
+    <h1 class="hero-title">Gumising, Sleeping Beauty 💙</h1>
+    <p class="hero-sub">16 buwan. 16 tula. Isang pusong patuloy na pumipili sa'yo.<br>Basahin mo muna silang lahat — may hintay na sulat sa dulo.</p>
+    <button class="btn-primary" id="startBtn">Simulan ✦</button>
+  </section>
+
+  <section id="screen-poems" class="screen">
+    <div class="thread" id="thread">
+      <div class="thread-track"></div>
+      <div class="thread-fill" id="threadFill"></div>
+      <div class="thread-dots" id="threadDots"></div>
+    </div>
+    <div class="poem-card" id="poemCard">
+      <p class="poem-kicker" id="poemKicker"></p>
+      <h2 class="poem-title" id="poemTitle"></h2>
+      <div class="poem-body" id="poemBody"></div>
+    </div>
+    <div class="nav-row">
+      <button class="btn-ghost" id="prevBtn">← Balik</button>
+      <button class="btn-primary" id="nextBtn">Susunod →</button>
+    </div>
+  </section>
+
+  <section id="screen-letter" class="screen">
+    <div class="divider">🩷 ✦ 💙</div>
+    <h2 class="letter-heading">Para Sa'yo, Sleeping Beauty</h2>
+    <div class="letter-card">
+      <p>Hi po babyyy happy 16th courtsary to usssssss, grabe it's been a long long long long time since nag start po ako manligaw sayooo. Rather I'd say 1 year and 4 months, 16 months, 69 weeks and 4 days, 487 days, 11,688 hours, 701,280 minutes, and 42,076,800 seconds I'm in love with you and it won't stop there kasi araw-araw at gabi gabi kita love ihh.</p>
+      <p>Hi my love love of my lifeee actually di ko nanaman po alam ang aking sasabihin sa liham na ito (palagi naman eh;-;).</p>
+      <p>Pero come to think of it na 16 months na akong nanliligaw sayo and still counting napapa wow gravity ako kasi I never thought I could love like this eh and I've never been happy like this before. You're the only woman made me feel loved and cared for. Even at my lowest you still choose to stay, and even you knew how hard I am to love, you still do it🥺</p>
+      <p>I know I don't say it often pero I will be always thankful to lord na binigay nya ikaw sakin eh like who would've thought na you can change my life. Dati naman I wasn't like this eh, alam ko naman na alam mo po yun pero nagbago ako onti onti simula nung dumating po ikaw sa buhay ko and until now I still want to be a better version for you and for myself.</p>
+      <p>Ayoko po kasing magsisi in the future na di ko nagawang maging better for you para mag stay ka po kasi let's be real, tao ka lang din po baby napapagod and possible if that happens na mapagod ka for waiting me to be best version of myself eh iwan mo po ako kasi nawalan ka po ng pag asa sakin eh🥺 pero hangga't maaga pa mahal ko onti onti kong aayusin yung sarili ko para sayo at para din po sa sarili ko.</p>
+      <p>Kaya ayun I'm so thankful po tlga kasi kung wala ka po baby wala ako sa gantong stage ng buhay ko eh possible nga po if I didn't met you maybe mas malala na ko like before or worst deds na ko;-;.</p>
+      <p>I wanted to apologize for all the mistakes I've done baby wether intentional or unintentional. Sana mahal mahal ko kahit kailan hindi ka po mapagod magpatawad sa mga kasalanan ko, you know naman po that I'm always trying my best to change and di na gawin yung mga bagay na ikinagagalit or ikinatatampo mo po.</p>
+      <p>Though nauulit ko pa rin po yung kasalanan ko baby and im trying to figure it out kung pano po iend yung ganun pero still no matter how hard I try parang mas lalong nagiging worst lang din po eh pero kahit na ganun baby sana po mag stay pa rin po ikaw and di magbago yung pagmamahal mo sakin🥺.</p>
+      <p>I love you so much more than you know my love, and I will always do even in the hardest and toughest situation we will ever have mahal ko. Even magkaroon po tayo ng misunderstanding or di na po natin maintindihan ang isa't isa we will find each other back in our way.</p>
+      <p>I love you so much mahal ko and sana ramdam mo po yunnn. Bale ayun lang po masasabi ko baby Happy 16th courtsary to us my loveee I hope more courtsaries to comeee.</p>
+      <p>P.S: Sorry po baby if di po maayos yung website and even the poems po kasi di po tlga ako masyado makaisip ng maayos ng tula nung mga nakaraan po kasi po marami din po ako iniisip eh, I'm sorry po tlga baby kasi po natagalan din po ito bago ko po maisend po sayoo🥺 I love you so much my lovee happy belated 16th courtsary to us againnn. I will always love youuuuu😘💙</p>
+    </div>
+    <p class="signature">Nagmamahal,<br>Princess Ayumi A. Naito<br>Princess, Ayumi, Naito, baby mo, asawa mo, coffee mate mo, boss mo, yumipotpot mo, yumisaurus mo, baks mo, mahal mo at love of your life po</p>
+    <button class="btn-ghost" id="replayBtn">Balikan Muli 🔁</button>
+  </section>
+
+</div>
+
+<script>
+  const poems = [
+    {lang:'ENGLISH', title:'Across the Sea', text:`One day, the islands will not keep us apart,\nNo more messages sent from across the sea.\nJust us, together, with a new chapter of our life,\nAnd every place we dreamed we would be.\n\nWe learned to love through the islands between,\nSomeday we will learn to just be still.\nAnd I am counting down every single day,\nUntil we finally meet, my love.`},
+    {lang:'ENGLISH', title:'Your Smile', text:`I have seen your smile on a screen,\nBut I wonder how it looks up close.\nIs it as bright as it seems,\nOr does it glow even more, I suppose?\n\nI cannot wait to see it in person,\nWithout the pixels and the light.\nYour smile is my favorite version,\nOf happiness that feels so right.`},
+    {lang:'ENGLISH', title:'The First Time', text:`I think about the first time we will hug,\nWill it be awkward or will it feel right?\nWill we just stand there like a bug,\nOr will everything feel so bright?\n\nI hope it feels like coming home,\nLike I have known you for a thousand years.\nI hope I do not feel alone,\nWhen I finally hold you and face my fears.`},
+    {lang:'ENGLISH', title:'Truth Over Comfort', text:`I could have stayed quiet.\nSilence would've been easy.\nBut love, I learned, it isn't about being perfect—\nit's choosing honesty,\n\nI could have hidden from the light,\nYet truth became the path I chose.\nYou saw my flaws and stayed beside me,\nWhere deeper, truer love still grows.`},
+    {lang:'ENGLISH', title:'There Was a Storm', text:`There was a storm we had to face,\nSilence stretched through time and space.\nForty-eight days of holding still,\nTesting hearts, testing will.\n\nBut love that's real will find its way,\nBack to warmth, back to day.\nWe chose each other, chose to mend,\nA broken thread became our friend.`},
+    {lang:'ENGLISH', title:'The Shared Playlist', text:`I made a playlist full of our own songs,\nEach track a memory wrapped in melody.\nI press play when the quiet feels too long,\nAnd let the music keep you close to me.\n\nThe chorus hits and suddenly you're here,\nYour voice sings with the singer on the track.\nI close my eyes and let the sound appear,\nA simple trick to bring my whole world back.`},
+    {lang:'ENGLISH', title:'The Voice Message', text:`I still remember that morning so clear,\nYou sent your voice because you lost a dare.\nI pressed play and suddenly you were near,\nYour good morning whisper filled the air.\n\nI saved that message deep inside my phone,\nI listen to it when I miss your sound.\nThat simple dare became the stepping stone,\nTo something real that I have finally found.`},
+    {lang:'ENGLISH', title:'Waiting', text:`I am not good at waiting, it is true,\nBut for you, I will try my best.\nBecause I know that I will get to you,\nAnd we will finally have our rest.\n\nThe waiting will be worth it all,\nWhen I finally see your face.\nI will not let myself fall,\nBecause I know we will find our place.`},
+    {lang:'TAGALOG', title:'Panaginip', text:`Sa aking panaginip, ika'y aking yakap,\nAng init ng bisig mo'y aking nadarama.\nNgunit paggising, ang kama ay walang laman,\nAng unan ay tanging saksi ng pagkabalisa.\n\nBumalik ka sa aking mga panaginip,\nDoon tayo ay walang puwang o oras.\nSa mundo ng tulog, tayo'y magkakapiling,\nHanggang sa ang araw ay muling sumikat.`},
+    {lang:'TAGALOG', title:'Orasan', text:`Ang orasan nati'y may sariling takbo,\nMinsan mabilis, minsan nama'y mabagal.\nSa gitna ng gabi, ako'y gising pa rin,\nHinihintay ang sagot sa iyong tawag.\n\nNgunit ang bawat segundo ay may halaga,\nDahil alam kong ikaw ay naghihintay rin.\nSa pag-ikot ng mundo, tayo'y nagtatagpo,\nSa isang saglit na tila ba walang hanggan.`},
+    {lang:'TAGALOG', title:'Update', text:`Nag-post ka ng bagong larawan ngayon,\nAgad kong ni-like at sinabi sayo na,\nAng simpleng "ganda mo" ay sapat na,\nPara maramdaman mong ako'y nandito.\n\nHindi ko na kailangan ng mahabang salita,\nAng presensya ko sa iyong mundo ay sapat.\nAng bawat update mo ay aking binabantayan,\nDahil ikaw ang laging nasa isipan.`},
+    {lang:'TAGALOG', title:'Tadhana', text:`Sa wakas ay nahanap din kita,\nMatapos ang mahabang paghihintay.\nHindi ko inakalang sa ganitong paraan,\nTayo ay magkakatagpo sa tamang panahon.\n\nNgayon alam ko na kung bakit,\nAng lahat ng nangyari ay may dahilan.\nAng tadhana ay naghintay ng tamang oras,\nPara tayo ay magkita at magmahalan.`},
+    {lang:'TAGALOG', title:'Panata', text:`Hindi na ako mag-aatubili,\nKapag dumating ang tamang sandali.\nSa harap ng Diyos at ng lahat,\nIkaw ang aking pipiliin, walang iba.\n\nWala nang pagdududa sa puso ko,\nDahil ikaw lang ang nakikita ko.\nAng tanging panata ko sa buhay,\nay ang mahalin ka hanggang sa dulo.`},
+    {lang:'TAGALOG', title:'Bukas', text:`Hindi ko alam kung kailan,\nNgunit alam kong darating ang araw.\nNa tayo ay magkasamang haharap,\nSa mundong puno ng pangako at ligaya.\n\nHanda akong maghintay ng tamang oras,\nDahil alam kong ikaw ay sulit.\nAng bukas ay magiging atin,\nAt ang pag-ibig nati'y walang hanggan.`},
+    {lang:'TAGALOG', title:'Ikaw at Ako', text:`Sa gitna ng magulong mundo,\nTayo ay nagkita sa tamang panahon.\nHindi ko alam kung paano,\nNgunit ang puso ko'y nakaramdam ng kapanatagan.\n\nNgayon ay wala nang ibang gusto,\nKundi ang makasama ka habang buhay.\nAng ikaw at ako ay hindi na tanong,\nKundi ang sagot sa aking mga panalangin.`},
+    {lang:'TAGALOG', title:'Pag-ibig', text:`Ang pag-ibig na ito ay hindi basta-basta,\nDahil sa'yo ko ito natagpuan.\nSa bawat araw na lumilipas,\nLalo kong nararamdaman ang iyong halaga.\n\nHindi ko na kailangan mag-isip pa,\nDahil alam ko na ang sagot.\nAng pag-ibig na ito ay para sa'yo,\nAt ako ay handang maghintay sa'yo.`}
+  ];
+
+  let current = 0;
+  const total = poems.length;
+
+  const poemKicker = document.getElementById('poemKicker');
+  const poemTitle = document.getElementById('poemTitle');
+  const poemBody = document.getElementById('poemBody');
+  const poemCard = document.getElementById('poemCard');
+  const threadFill = document.getElementById('threadFill');
+  const threadDots = document.getElementById('threadDots');
+  const prevBtn = document.getElementById('prevBtn');
+  const nextBtn = document.getElementById('nextBtn');
+
+  function buildDots(){
+    threadDots.innerHTML = '';
+    poems.forEach((p, i) => {
+      const d = document.createElement('span');
+      d.className = 'dot';
+      d.textContent = (i === total - 1) ? '🌷' : '✦';
+      threadDots.appendChild(d);
+    });
+  }
+
+  function renderPoem(){
+    const p = poems[current];
+    const num = String(current + 1).padStart(2, '0');
+    const label = p.lang === 'TAGALOG' ? 'TULA' : 'POEM';
+
+    poemCard.classList.remove('enter');
+    void poemCard.offsetWidth;
+
+    poemKicker.textContent = `${label} ${num} / ${total} · ${p.lang}`;
+    poemTitle.textContent = p.title;
+    poemBody.innerHTML = p.text.split('\n\n').map(stanza =>
+      '<p>' + stanza.split('\n').join('<br>') + '</p>'
+    ).join('');
+
+    poemCard.classList.toggle('lang-en', p.lang === 'ENGLISH');
+    poemCard.classList.add('enter');
+
+    threadFill.style.width = (current / (total - 1)) * 100 + '%';
+    [...threadDots.children].forEach((dot, i) => {
+      dot.classList.toggle('lit', i <= current);
+    });
+
+    prevBtn.disabled = current === 0;
+    nextBtn.textContent = current === total - 1 ? 'Buksan ang Sulat 💌' : 'Susunod →';
+  }
+
+  function goToScreen(name){
+    document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+    const target = document.getElementById('screen-' + name);
+    target.classList.add('active');
+    target.scrollTop = 0;
+  }
+
+  prevBtn.addEventListener('click', () => {
+    if (current > 0) { current--; renderPoem(); }
+  });
+
+  nextBtn.addEventListener('click', () => {
+    if (current < total - 1) { current++; renderPoem(); }
+    else { goToScreen('letter'); }
+  });
+
+  document.addEventListener('keydown', (e) => {
+    if (!document.getElementById('screen-poems').classList.contains('active')) return;
+    if (e.key === 'ArrowRight') nextBtn.click();
+    if (e.key === 'ArrowLeft') prevBtn.click();
+  });
+
+  document.getElementById('startBtn').addEventListener('click', () => goToScreen('poems'));
+
+  document.getElementById('replayBtn').addEventListener('click', () => {
+    current = 0;
+    renderPoem();
+    goToScreen('intro');
+  });
+
+  buildDots();
+  renderPoem();
+</script>
+
+</body>
+</html>
